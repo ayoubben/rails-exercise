@@ -1,0 +1,4 @@
+# Rails exercise
+
+This application is a Rails exercise built and used by Linc S.A.
+It's a short and simple app which allow us to evaluate the candidates skills.

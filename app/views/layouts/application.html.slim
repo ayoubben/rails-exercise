@@ -1,0 +1,38 @@
+doctype html
+html lang="en"
+  head
+    meta charset="utf-8"
+    meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+    title= content_for?(:title) ? yield(:title) : "Rails Exercise"
+    = csrf_meta_tags
+    = stylesheet_link_tag "application", :media => "all"
+    = favicon_link_tag 'favicon.ico', :rel => 'shortcut icon'
+    = javascript_include_tag "application"
+    /! Le HTML5 shim, for IE6-8 support of HTML elements
+    /[if lt IE 9]
+      = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"
+
+
+  body
+    .unobtrusive-flash-container
+    .site-wrapper
+      .site-wrapper-inner
+        .cover-container
+          .masthead.clearfix
+            .inner
+              h3.masthead-brand Rails Exercise
+              nav
+                ul.nav.masthead-nav
+                  li.active
+                    a href="#{root_url}" Home
+
+          .inner.cover
+            = yield
+
+          .mastfoot
+            .inner
+              p
+                | Rails exercice build and used by Linc S.A.
+                '
+                = link_to 'http://www.linc.lu', 'http://www.linc.lu'
