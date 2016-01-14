@@ -31,4 +31,5 @@ group :test do
   gem 'selenium-webdriver'
   gem 'faker'
   gem 'capybara-screenshot'
+  gem 'simplecov', require: false
 end
