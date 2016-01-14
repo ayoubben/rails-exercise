@@ -24,4 +24,11 @@ group :development, :test do
 end
 group :test do
   gem 'shoulda-matchers', '~> 3.0'
+  gem 'cucumber-rails', require: false
+  gem 'database_cleaner'
+  gem 'site_prism'
+  gem 'poltergeist'
+  gem 'selenium-webdriver'
+  gem 'faker'
+  gem 'capybara-screenshot'
 end
