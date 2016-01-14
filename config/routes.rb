@@ -53,5 +53,12 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+  resources :tasks do
+    member do
+      patch :toggle
+    end
+  end
+
   root 'home#index'
 end

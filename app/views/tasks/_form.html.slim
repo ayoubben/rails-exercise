@@ -1,0 +1,12 @@
+= form_for @new_task, html: { class: 'form-inline' } do |f|
+  div class="form-group#{' has-error' if @new_task.errors[:author_email].present?}"
+    = f.email_field :author_email, placeholder: 'Email address', class: 'form-control'
+
+  div class="form-group#{' has-error' if @new_task.errors[:title].present?}"
+    = f.text_field :title, placeholder: 'New task title ...', class: 'form-control'
+
+  = f.submit '+', class: 'btn btn-primary'
+
+  - if @new_task.errors.present?
+    p.help-block
+      .text-danger.text-center= @new_task.errors.full_messages.to_sentence

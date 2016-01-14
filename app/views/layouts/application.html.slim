@@ -13,7 +13,6 @@ html lang="en"
     /[if lt IE 9]
       = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"
 
-
   body
     .unobtrusive-flash-container
     .site-wrapper
@@ -24,8 +23,10 @@ html lang="en"
               h3.masthead-brand Rails Exercise
               nav
                 ul.nav.masthead-nav
-                  li.active
+                  li class="#{'active' if controller_name == 'home'}"
                     a href="#{root_url}" Home
+                  li class="#{'active' if controller_name == 'tasks'}"
+                    a href="#{tasks_url}" Tasks
 
           .inner.cover
             = yield
@@ -36,3 +37,5 @@ html lang="en"
                 | Rails exercice build and used by Linc S.A.
                 '
                 = link_to 'http://www.linc.lu', 'http://www.linc.lu'
+
+    = yield :javascript

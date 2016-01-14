@@ -1,0 +1,31 @@
+== content_for :javascript do
+  javascript:
+    $(document).on('ready page:load', function() {
+      $('#tasks table tbody input[type="checkbox"]').on('click', function(event) {
+        $(this).closest('form').submit();
+      });
+    });
+
+#tasks
+  = render partial: 'form'
+
+  - if @tasks.empty?
+    i You do not have any tasks yet. Start to fill in a new task title and hit enter.
+  - else
+
+    table.table.table-hover
+      thead
+        tr
+          th #
+          th
+          th Author
+          th Title
+      tbody
+        - @tasks.each do |task|
+          tr class="task" id="#{task.id}"
+            td= task.id
+            td
+              = form_for task, url: toggle_task_path(task), remote: true do |f|
+                = f.check_box :check
+            td= task.author_email
+            td= task.title
