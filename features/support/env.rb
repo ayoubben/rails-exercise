@@ -39,18 +39,20 @@ ActionController::Base.allow_rescue = false
 # For some databases (like MongoDB and CouchDB) you may need to use :truncation instead.
 begin
   DatabaseCleaner.logger = Rails.logger
-  DatabaseCleaner.strategy = :transaction
+  DatabaseCleaner.strategy = :truncation
   DatabaseCleaner.clean_with(:truncation)
 rescue NameError
   raise "You need to add database_cleaner to your Gemfile (in the :test group) if you wish to use it."
 end
 
 Before do |scenario, block|
+  Rails.logger.debug "-------> Before Scenario: #{scenario.to_sexp[3]}"
   DatabaseCleaner.start
 end
 
 After do |scenario, block|
   DatabaseCleaner.clean
+  Rails.logger.debug "<------- After Scenario: #{scenario.to_sexp[3]}"
 end
 
 # You may also want to configure DatabaseCleaner to use different strategies for certain features and scenarios.

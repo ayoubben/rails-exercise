@@ -1,8 +1,16 @@
 class TaskSection < SitePrism::Section
   element :id, 'td.id'
-  element :toggle, 'td.toggle'
+  element :toggle, 'td.toggle input[type="checkbox"]'
   element :author_email, 'td.author_email'
   element :title, 'td.title'
+
+  def click
+    toggle.click
+  end
+
+  def done?
+    toggle.checked?
+  end
 end
 
 class TasksPage < SitePrism::Page
