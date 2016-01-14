@@ -18,3 +18,7 @@ gem 'sprockets-rails'
 gem 'slim-rails'
 gem 'unobtrusive_flash'
 gem 'interactor-rails'
+
+group :development, :test do
+  gem 'rspec-rails'
+end
