@@ -20,5 +20,8 @@ gem 'unobtrusive_flash'
 gem 'interactor-rails'
 
 group :development, :test do
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 3.0'
+end
+group :test do
+  gem 'shoulda-matchers', '~> 3.0'
 end

@@ -54,7 +54,7 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 
-  resources :tasks do
+  resources :tasks, only: [:index, :create] do
     member do
       patch :toggle
     end
