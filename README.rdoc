@@ -11,3 +11,5 @@ It's a short and simple app which allow us to evaluate the candidates skills.
  - [ ] [Ajaxify the task creation](Linc-Lu/rails-exercise#4)
  - [ ] [Add user management](Linc-Lu/rails-exercise#5)
  - [ ] [Pagination](Linc-Lu/rails-exercise#6)
+ - [ ] [Export task](Linc-Lu/rails-exercise#7)
+ - [ ] [Add sub tasks feature](Linc-Lu/rails-exercise#8)
