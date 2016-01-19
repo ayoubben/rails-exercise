@@ -1,9 +1,9 @@
-= form_for @new_task, url: tasks_path, method: :post, html: { class: 'form-inline' } do |f|
+= form_for @new_task, url: tasks_path, method: :post, html: { class: 'form-inline', id: 'task-form' }, remote: true  do |f|
   div class="form-group#{' has-error' if @new_task.errors[:author_email].present?}"
     = f.email_field :author_email, placeholder: 'Email address', class: 'form-control'
 
   div class="form-group#{' has-error' if @new_task.errors[:title].present?}"
-    = f.text_field :title, placeholder: 'New task title ...', class: 'form-control'
+    = f.text_field :title, placeholder: 'New task title ...', class: 'form-control title'
 
   = f.submit '+', class: 'btn btn-primary'
 
