@@ -19,6 +19,8 @@ gem 'slim-rails'
 gem 'unobtrusive_flash'
 gem 'interactor-rails'
 gem 'will_paginate-bootstrap'
+gem 'devise-bootstrap-views'
+gem 'devise'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'

@@ -15,20 +15,21 @@
     - if @tasks.empty?
       i You do not have any tasks yet. Start to fill in a new task title and hit enter.
     - else
-        thead
-          tr
-            th #
-            th
-            th Author
-            th Title
-        tbody
-          - @tasks.each do |task|
-            tr class="task #{'done' if task.done}" id="#{task.id}"
-              td.id= task.id
-              td.toggle
-                = form_for task, url: toggle_task_path(task), remote: true do |f|
-                  = f.check_box :check
-              td.author_email= task.author_email
-              td.title= task.title
+      thead
+        tr
+          th #
+          th
+          th Author
+          th Title
+      tbody
+        - @tasks.each do |task|
+          tr class="task #{'done' if task.done}" id="#{task.id}"
+            td.id= task.id
+            td.toggle
+              = form_for task, url: toggle_task_path(task), remote: true do |f|
+                = f.check_box :check
+            td.author_email= task.author_email
+            td.title= task.title
+
   #pagination
     = will_paginate @tasks, renderer: BootstrapPagination::Rails

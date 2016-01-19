@@ -7,6 +7,7 @@ class Task < ActiveRecord::Base
   # @nodoc ~~~ callbacks ~~~
 
   # @nodoc ~~~ links ~~~
+  belongs_to :user
 
   # @nodoc ~~~ validations ~~~
   validates :author_email, :title, presence: true
