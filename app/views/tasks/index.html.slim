@@ -22,7 +22,7 @@
           th Title
       tbody
         - @tasks.each do |task|
-          tr class="task" id="#{task.id}"
+          tr class="task #{'done' if task.done}" id="#{task.id}"
             td.id= task.id
             td.toggle
               = form_for task, url: toggle_task_path(task), remote: true do |f|
