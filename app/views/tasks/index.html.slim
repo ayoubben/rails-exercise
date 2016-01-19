@@ -30,3 +30,5 @@
                   = f.check_box :check
               td.author_email= task.author_email
               td.title= task.title
+  #pagination
+    = will_paginate @tasks, renderer: BootstrapPagination::Rails

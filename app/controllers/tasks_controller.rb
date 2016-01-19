@@ -18,7 +18,7 @@ class TasksController < ApplicationController
   private
 
   def fetch_tasks
-    @tasks = Task.all
+    @tasks = Task.paginate(:page => params[:page], :per_page => 5)
   end
 
   def create_params
