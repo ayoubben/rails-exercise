@@ -2,6 +2,7 @@ class TasksController < ApplicationController
   before_action :authenticate_user!
   before_action :fetch_tasks
   before_action :build_object, only: [:index, :create]
+  before_action :build_sub_object, only: [:index, :create]
 
   def index; end
 
@@ -26,7 +27,15 @@ class TasksController < ApplicationController
     params[:task].try(:permit, :title, :author_email, :user_id)
   end
 
+  def create_sub_params
+    params[:sub_task].try(:permit, :title, :task_id, :task_id)
+  end
+
   def build_object
     @new_task = create_params ? CreateTask.call(create_params).task : Task.new
+  end
+
+  def build_sub_object
+    @new_sub_task = create_sub_params ? CreateSubTask.call(create_sub_params).task : SubTask.new
   end
 end

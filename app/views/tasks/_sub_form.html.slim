@@ -1,0 +1,11 @@
+= form_for @new_sub_task, url: tasks_path, method: :post, html: { class: 'form-inline', id: 'task-form' } do |f|
+  = f.hidden_field :task_id, value: task.id
+
+  div class="form-group#{' has-error' if @new_sub_task.errors[:title].present?}"
+    = f.text_field :title, placeholder: 'New SUB task title ...', class: 'form-control subtitle'
+
+  = f.submit '+', class: 'btn btn-info'
+
+  - if @new_sub_task.errors.present?
+    p.help-block
+      .text-danger.text-center= @new_sub_task.errors.full_messages.to_sentence

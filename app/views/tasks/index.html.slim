@@ -9,7 +9,11 @@
 #tasks
   = render partial: 'form'
 
-
+  .row.sub_tasks
+    .col-md-3
+      | SUB Taks
+    .col-md-9
+      #sub_tasks
 
   table.table.table-hover#task-table
     - if @tasks.empty?
@@ -21,15 +25,26 @@
           th
           th Author
           th Title
+          th Sub Tasks
       tbody
         - @tasks.each do |task|
           tr class="task #{'done' if task.done}" id="#{task.id}"
+
             td.id= task.id
             td.toggle
               = form_for task, url: toggle_task_path(task), remote: true do |f|
                 = f.check_box :check
-            td.author_email= task.author_email
+            td.author_email onclick='$("#sub_tasks").append("#{escape_javascript("#{render partial: "sub_form", locals: {task: task}}")}");'
+              = task.author_email
             td.title= task.title
+            td = link_to "+", "#", class: 'btn btn-xs btn-info btntoggle'
+          - task.sub_tasks.each do |subtask|
+            tr class="subtask" id="subtasktr#{task.id}"
+              td.id= subtask.id
+              td.toggle
+              td.author_email= task.author_email
+              td.title= subtask.title
+
 
   #pagination
     = will_paginate @tasks, renderer: BootstrapPagination::Rails

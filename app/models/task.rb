@@ -8,6 +8,7 @@ class Task < ActiveRecord::Base
 
   # @nodoc ~~~ links ~~~
   belongs_to :user
+  has_many :sub_tasks
 
   # @nodoc ~~~ validations ~~~
   validates :author_email, :title, presence: true
