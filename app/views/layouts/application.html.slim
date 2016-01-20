@@ -28,6 +28,7 @@ html lang="en"
                   li class="#{'active' if controller_name == 'tasks'}"
                     a href="#{tasks_url}" Tasks
                   - if user_signed_in?
+                    li = link_to "Export CSV", tasks_path(format: "csv")
                     li = current_user.full_name
                     li = link_to "Logout", destroy_user_session_path, method: :delete, class: 'navbar-link'
                   - else

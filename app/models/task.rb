@@ -21,4 +21,20 @@ class Task < ActiveRecord::Base
   def toggle_done!
     toggle!(:done)
   end
+
+  def status
+    return self.done ? 'done' : 'pending'
+  end
+
+  def self.to_csv
+    attributes = %w{id author_email title status full_name sub_task}
+
+    CSV.generate(headers: true) do |csv|
+      csv << attributes
+
+      all.each do |task|
+        csv << [task.id, task.author_email, task.title, task.status, task.user.full_name, task.sub_tasks.count]
+      end
+    end
+  end
 end

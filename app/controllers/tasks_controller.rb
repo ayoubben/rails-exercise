@@ -4,7 +4,12 @@ class TasksController < ApplicationController
   before_action :build_object, only: [:index, :create]
   before_action :build_sub_object, only: [:index, :create]
 
-  def index; end
+  def index
+    respond_to do |format|
+      format.html
+      format.csv { send_data Task.all.to_csv, filename: "Tasks-#{Date.today}.csv" }
+    end
+  end
 
   def create
     render action: :index
