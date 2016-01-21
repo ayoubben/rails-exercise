@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 describe TasksController, type: :controller do
+  before :each do
+    @request.env["devise.mapping"] = Devise.mappings[:user]
+    @user = FactoryGirl.create(:user)
+    sign_in @user
+  end
   describe 'Routing' do
     it { should route(:get, '/tasks').to(controller: :tasks, action: :index) }
     it { should_not route(:get, '/tasks/new').
@@ -33,9 +38,9 @@ describe TasksController, type: :controller do
 
     it 'loads all of the tasks into @tasks' do
       task1 = Task.create!(author_email: 'steve@yellow.lu',
-                           title: 'Apprendre à utiliser Docker')
+                           title: 'Apprendre à utiliser Docker', user_id: @user.id)
       task2 = Task.create!(author_email: 'mireille@yellow.lu',
-                           title: 'Rendre visite à Mustafa')
+                           title: 'Rendre visite à Mustafa', user_id: @user.id)
 
       get :index
 

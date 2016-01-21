@@ -35,4 +35,5 @@ group :test do
   gem 'faker'
   gem 'capybara-screenshot'
   gem 'simplecov', require: false
+  gem 'factory_girl_rails'
 end
